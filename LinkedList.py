@@ -208,6 +208,29 @@ class LinkedList():
                 prev = current_node
             current_node = prev.next
 
+    def occurances(self, data):
+            # Iterative
+        count = 0
+        pointer = self.head
+
+        while pointer:
+            if pointer.data == data:
+                count += 1
+            pointer = pointer.next
+
+        print(f'{data} has {count} occurances')
+        return count
+
+    def occurances_recursive(self, node, data):
+        # Recursive
+        if not node:
+            return 0
+        if node.data == data:
+            node = node.next
+            return 1 + self.occurances_recursive(node, data)
+        else:
+            return self.occurances_recursive(node.next, data)
+
 
 # Linke List object
 llist = LinkedList()
@@ -215,7 +238,9 @@ llist.append(1)
 llist.append(3)
 llist.append(5)
 llist.append(5)
-llist.remove_duplicates()
+
+llist.occurances(5)
+# llist.remove_duplicates()
 # llist.prepend(6)
 # llist.insert_after_node(llist.head, 5)
 # llist.delete_node('C')
