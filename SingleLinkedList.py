@@ -1,8 +1,4 @@
-class Node():
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-
+from Node import Node
 
 class LinkedList():
     def __init__(self):
@@ -311,5 +307,5 @@ llist.append('R')
 # llist.len_iter()
 # llist.len_recursive(llist.head)
 # llist.merge_sorted
-print(llist.is_palindrome())
+# print(llist.is_palindrome())
 llist.print_list()
