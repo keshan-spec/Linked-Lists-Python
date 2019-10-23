@@ -129,6 +129,33 @@ class LinkedList():
             self.head = current_node
         current_node.next, current_node_2.next = current_node_2.next, current_node.next
 
+    def reverse_iter(self):
+        current_node = self.head
+        prev = None
+
+        while current_node:
+            next_node = current_node.next
+            current_node.next = prev
+            self.helper(prev, "PREV")
+            self.helper(current_node, "CURRENT")
+            self.helper(next_node, "NEXT")
+            print('')
+            prev = current_node
+            current_node = next_node
+        self.head = prev
+
+    def reverse_recursive(self):
+        def _recursive(current_node, prev_node):
+            if not current_node:
+                return prev_node
+
+            next_node = current_node.next
+            current_node.next = prev_node
+            prev_node = current_node
+            current_node = next_node
+            return _recursive(current_node, prev_node)
+        self.head = _recursive(self.head, None)
+
 
 # Linke List object
 llist = LinkedList()
