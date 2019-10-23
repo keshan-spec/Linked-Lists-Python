@@ -8,7 +8,13 @@ Example :
 This linked list does not have a null ending pointer. the node before last is
 next to the head node
 Here 1 is the head node and 3 is the node before last and it is curularly next to the head
-
+Example:
+    Node A is the head
+    Node D is the tail
+    [A] -> [B]
+    [B] -> [C]
+    [C] -> [D]
+    [D] -> [A]
 """
 
 
@@ -165,31 +171,33 @@ class CLinkList:
             current_node = current_node.next
 
     def is_circular_ll(self, inp_list):
+        pointer = inp_list.head
+        while pointer.next:
+            if pointer.next == inp_list.head:
+                return True
+            pointer = pointer.next
+        return False
 
-        # Circular Linked list class object
+
+# Circular Linked list class object
 cl = CLinkList()
-"""
-Example:
-    Node A is the head
-    Node D is the tail
-    [A] -> [B]
-    [B] -> [C]
-    [C] -> [D]
-    [D] -> [A]
-"""
+
 cl.append('A')
 cl.append('B')
 cl.append('C')
 cl.append('D')
 cl.append('E')
 cl.append('F')
-# cl.remove_node(cl.head.next)
-cl.josephus_circ(2)
+# cl.print_cllist()
 
-# split_1, split_2 = cl.split()
-# split_1.print_cllist()
-# split_2.print_cllist()
-# cl.prepend('F')
-# cl.remove('B')
-# cl.append_after(cl.head.next, 'K')
-cl.print_cllist()
+# Singly Linked list class object
+ll = LinkedList()
+ll.append('A')
+ll.append('B')
+ll.append('C')
+ll.append('D')
+# ll.print_list()
+
+
+print(cl.is_circular_ll(cl))  # Return True
+print(cl.is_circular_ll(ll))  # Return False

@@ -288,30 +288,30 @@ class LinkedList():
         return palindrome[::-1] == palindrome[:]
 
 
-# Linke List object
-llist = LinkedList()
-"""
-Example:
-    Node A is the head
-    [A] -> [B] ->[C] -> [D] -> NUll
-
-"""
-llist.append('R')
-llist.append('A')
-llist.append('C')
-llist.append('E')
-llist.append('C')
-llist.append('A')
-llist.append('R')
-# llist.occurances(5)
-# llist.occurances_recursive(llist.head, 5)
-# llist.remove_duplicates()
-# llist.prepend(6)
-# llist.insert_after_node(llist.head, 5)
-# llist.delete_node('C')
-# llist.delete_node_at(1)
-# llist.len_iter()
-# llist.len_recursive(llist.head)
-# llist.merge_sorted()
-# print(llist.is_palindrome())
-llist.print_list()
+if __name__ == '__main__':
+    # Linke List object
+    llist = LinkedList()
+    """
+    Example:
+        Node A is the head
+        [A] -> [B] ->[C] -> [D] -> NUll
+    """
+    llist.append('R')
+    llist.append('A')
+    llist.append('C')
+    llist.append('E')
+    llist.append('C')
+    llist.append('A')
+    llist.append('R')
+    # llist.occurances(5)
+    # llist.occurances_recursive(llist.head, 5)
+    # llist.remove_duplicates()
+    # llist.prepend(6)
+    # llist.insert_after_node(llist.head, 5)
+    # llist.delete_node('C')
+    # llist.delete_node_at(1)
+    # llist.len_iter()
+    # llist.len_recursive(llist.head)
+    # llist.merge_sorted()
+    # print(llist.is_palindrome())
+    llist.print_list()
