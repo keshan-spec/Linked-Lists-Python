@@ -60,6 +60,27 @@ class LinkedList():
         else:
             return
 
+    def delete_node_at(self, index):
+        current_node = self.head
+        if current_node and index == 0:
+            self.head = current_node.next
+            current_node = None
+            return
+
+        prev = None
+        count = 0
+        while current_node and count != index:
+            prev = current_node
+            current_node = current_node.next
+            count += 1
+
+        if current_node:
+            prev.next = current_node.next
+            current_node = None
+            return
+        else:
+            return
+
 
 # Linke List object
 llist = LinkedList()
@@ -68,5 +89,6 @@ llist.append('B')
 llist.append('C')
 # llist.prepend(6)
 # llist.insert_after_node(llist.head, 5)
-llist.delete_node('C')
+# llist.delete_node('C')
+llist.delete_node_at(1)
 llist.print_list()
