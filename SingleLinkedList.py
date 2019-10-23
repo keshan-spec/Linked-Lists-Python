@@ -281,13 +281,25 @@ class LinkedList():
         self.head = pointer.next
         pointer.next = None
 
+    def is_palindrome(self):
+        current_node = self.head
+        palindrome = []
+        while current_node:
+            palindrome.append(current_node.data)
+            current_node = current_node.next
+
+        return palindrome[::-1] == palindrome[:]
+
 
 # Linke List object
 llist = LinkedList()
-llist.append(1)
-llist.append(3)
-llist.append(5)
-llist.append(5)
+llist.append('R')
+llist.append('A')
+llist.append('C')
+llist.append('E')
+llist.append('C')
+llist.append('A')
+llist.append('R')
 
 # llist.occurances(5)
 # llist.occurances_recursive(llist.head, 5)
@@ -299,4 +311,5 @@ llist.append(5)
 # llist.len_iter()
 # llist.len_recursive(llist.head)
 # llist.merge_sorted
+print(llist.is_palindrome())
 llist.print_list()
