@@ -37,19 +37,20 @@ class CLinkList:
         new_node = Node(data)
         self.head = new_node
         self.head.next = current_node
-    # def prepend(self, prev, data):
-    #     current_node = self.head
-    #     if not current_node:
-    #         return
 
-    #     while current_node:
-    #         if current_node.data == prev.data:
-    #             prev = current_node
-    #             current_node = current_node.next
+    def append_after(self, prev, data):
+        current_node = self.head
+        if not current_node:
+            return
+
+        new_node = Node(data)
+        new_node.next = prev.next
+        prev.next = new_node
 
 
 cl = CLinkList()
 cl.append('A')
 cl.append('B')
 cl.append('C')
+# cl.append_after(cl.head.next, 'F')
 cl.print_cllist()
