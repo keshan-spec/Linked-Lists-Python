@@ -156,16 +156,59 @@ class LinkedList():
             return _recursive(current_node, prev_node)
         self.head = _recursive(self.head, None)
 
+    def merge_sorted(self, llist):
+        merged_list = None
+        list_1 = self.head
+        list_2 = llist.head
 
+        if not list_1:
+            return list_2
+        if not list_2:
+            return list_1
+
+        if list_1 and list_2:
+            if list_1.data <= list_2.data:
+                merged_list = list_1
+                list_1 = merged_list.next
+
+            else:
+                merged_list = list_2
+                list_2 = merged_list.next
+            new_head = merged_list
+
+        while list_1 and list_2:
+            if list_2.data <= list_1.data:
+                merged_list.next = list_2
+                merged_list = list_2
+                list_2 = merged_list.next
+            else:
+                merged_list.next = list_1
+                merged_list = list_1
+                list_1 = merged_list.next
+
+        if not list_1:
+            merged_list.next = list_2
+        if not list_2:
+            merged_list.next = list_1
+
+        return new_head
+
+        # print(list_1.data, list_2.data)
 # Linke List object
 llist = LinkedList()
-llist.append('A')
-llist.append('B')
-llist.append('C')
+llist.append(1)
+llist.append(3)
+llist.append(5)
+llist1 = LinkedList()
+llist1.append(2)
+llist1.append(4)
+llist1.append(6)
+llist.merge_sorted(llist1)
 # llist.prepend(6)
 # llist.insert_after_node(llist.head, 5)
 # llist.delete_node('C')
 # llist.delete_node_at(1)
 # llist.len_iter()
 # llist.len_recursive(llist.head)
+llist.merge_sorted
 llist.print_list()
