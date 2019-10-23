@@ -260,6 +260,27 @@ class LinkedList():
 
         print(pointer.data)
 
+    def rotate(self, k):
+        prev = None
+        pointer = self.head
+        q = self.head
+        count = 1
+
+        while pointer and count <= k:
+            prev = pointer
+            pointer = pointer.next
+            count += 1
+        pointer = prev
+
+        while q:
+            prev = q
+            q = q.next
+        q = prev
+
+        q.next = self.head
+        self.head = pointer.next
+        pointer.next = None
+
 
 # Linke List object
 llist = LinkedList()
