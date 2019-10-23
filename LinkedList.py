@@ -102,6 +102,35 @@ class LinkedList():
             return 0
         return 1 + self.len_recursive(node.next)
 
+    def swap_nodes(self, key1, key2):
+        current_node = self.head
+        current_node_2 = self.head
+        prev_1 = None
+        prev_2 = None
+        if key1 == key2:
+            return
+
+        while current_node and current_node.data != key1:
+            prev_1 = current_node
+            current_node = current_node.next
+
+        while current_node_2 and current_node_2.data != key2:
+            prev_2 = current_node_2
+            current_node_2 = current_node_2.next
+
+        if not current_node or not current_node_2:
+            return
+
+        if prev_1:
+            prev_1.next = current_node_2
+        else:
+            self.head = current_node_2
+        if prev_2:
+            prev_2.next = current_node
+        else:
+            self.head = current_node
+        current_node.next, current_node_2.next = current_node_2.next, current_node.next
+
 
 # Linke List object
 llist = LinkedList()
@@ -112,6 +141,6 @@ llist.append('C')
 # llist.insert_after_node(llist.head, 5)
 # llist.delete_node('C')
 # llist.delete_node_at(1)
-llist.len_iter()
-llist.len_recursive(llist.head)
+# llist.len_iter()
+# llist.len_recursive(llist.head)
 llist.print_list()
