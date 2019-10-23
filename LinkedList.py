@@ -33,10 +33,20 @@ class LinkedList():
         new_node.next = self.head
         self.head = new_node
 
+    def insert_after_node(self, prev_node, data):
+        if not prev_node:
+            print("[-] Prev node is not valid")
+            return
+        new_node = Node(data)
+        new_node.next = prev_node.next
+        prev_node.next = new_node
+
 
 # Linke List object
 llist = LinkedList()
 llist.append(1)
 llist.append(2)
 llist.append(3)
+llist.prepend(6)
+llist.insert_after_node(llist.head, 5)
 llist.print_list()
