@@ -28,6 +28,11 @@ class LinkedList():
             last_node = last_node.next
         last_node.next = new_node
 
+    def prepend(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
 
 # Linke List object
 llist = LinkedList()
