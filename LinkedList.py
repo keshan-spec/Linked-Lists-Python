@@ -194,16 +194,28 @@ class LinkedList():
         return new_head
 
         # print(list_1.data, list_2.data)
+
+    def remove_duplicates(self):
+        current_node = self.head
+        prev = None
+        unique = {}
+        while current_node:
+            if current_node.data in unique:
+                prev.next = current_node.next
+                current_node = None
+            else:
+                unique[current_node.data] = 1
+                prev = current_node
+            current_node = prev.next
+
+
 # Linke List object
 llist = LinkedList()
 llist.append(1)
 llist.append(3)
 llist.append(5)
-llist1 = LinkedList()
-llist1.append(2)
-llist1.append(4)
-llist1.append(6)
-llist.merge_sorted(llist1)
+llist.append(5)
+llist.remove_duplicates()
 # llist.prepend(6)
 # llist.insert_after_node(llist.head, 5)
 # llist.delete_node('C')
