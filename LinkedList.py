@@ -231,6 +231,35 @@ class LinkedList():
         else:
             return self.occurances_recursive(node.next, data)
 
+    def nth_from_last(self, n):
+        # Method one
+        # length = self.len_iter()
+        # current_node = self.head
+        # while current_node:
+        #     if length == n:
+        #         print(current_node.data)
+        #         return current_node
+        #     length -= 1
+        #     current_node = current_node.next
+        # if current_node == None:
+        #     return
+
+        # Method two
+        pointer = self.head
+        q = self.head
+        count = 0
+        while q and count < n:
+            q = q.next
+            count += 1
+        if not q:
+            print("Invalid length in Linked List")
+            return
+        while pointer and q:
+            pointer = pointer.next
+            q = q.next
+
+        print(pointer.data)
+
 
 # Linke List object
 llist = LinkedList()
@@ -239,8 +268,8 @@ llist.append(3)
 llist.append(5)
 llist.append(5)
 
-llist.occurances(5)
-llist.occurances_recursive(llist.head, 5)
+# llist.occurances(5)
+# llist.occurances_recursive(llist.head, 5)
 # llist.remove_duplicates()
 # llist.prepend(6)
 # llist.insert_after_node(llist.head, 5)
@@ -248,5 +277,5 @@ llist.occurances_recursive(llist.head, 5)
 # llist.delete_node_at(1)
 # llist.len_iter()
 # llist.len_recursive(llist.head)
-llist.merge_sorted
+# llist.merge_sorted
 llist.print_list()
