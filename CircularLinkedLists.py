@@ -36,15 +36,14 @@ class CLinkList:
         """
         new_node = Node(data)
         current_node = self.head
-        if current_node:
+        if not self.head:
+            self.head = new_node
+            self.head.next = self.head
+        else:
             while current_node.next != self.head:
                 current_node = current_node.next
             current_node.next = new_node
             new_node.next = self.head
-            return
-
-        self.head = new_node
-        self.head.next = self.head
 
     def prepend(self, data):
         """
@@ -102,6 +101,40 @@ class CLinkList:
             prev.next = current_node.next
             current_node = None
 
+    def __len__(self):
+        count = 0
+        node = self.head
+
+        while node:
+            count += 1
+            node = node.next
+            if node == self.head:
+                break
+        return count
+
+    def split(self):
+        size = len(self)
+        if size == 0:
+            return None
+        if size == 1:
+            return self.head.data
+
+        mid = size // 2
+        count = 0
+        current_node = self.head
+        prev = None
+        while current_node and count < mid:
+            count += 1
+            prev = current_node
+            current_node = current_node.next
+        prev.next = self.head
+        split_clist = CLinkList()
+        while current_node.next != self.head:
+            split_clist.append(current_node.data)
+            current_node = current_node.next
+        split_clist.append(current_node.data)
+        return self, split_clist
+
 
 # Circular Linked list class object
 cl = CLinkList()
@@ -118,9 +151,13 @@ cl.append('A')
 cl.append('B')
 cl.append('C')
 cl.append('D')
-
+cl.append('E')
+cl.append('F')
+split_1, split_2 = cl.split()
+split_1.print_cllist()
+split_2.print_cllist()
 
 # cl.prepend('F')
 # cl.remove('B')
 # cl.append_after(cl.head.next, 'K')
-cl.print_cllist()
+# cl.print_cllist()

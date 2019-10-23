@@ -1,5 +1,6 @@
 from Node import Node
 
+
 class LinkedList():
     def __init__(self):
         self.head = None
@@ -289,6 +290,12 @@ class LinkedList():
 
 # Linke List object
 llist = LinkedList()
+"""
+Example:
+    Node A is the head
+    [A] -> [B] ->[C] -> [D] -> NUll
+
+"""
 llist.append('R')
 llist.append('A')
 llist.append('C')
@@ -296,7 +303,6 @@ llist.append('E')
 llist.append('C')
 llist.append('A')
 llist.append('R')
-
 # llist.occurances(5)
 # llist.occurances_recursive(llist.head, 5)
 # llist.remove_duplicates()
@@ -306,6 +312,6 @@ llist.append('R')
 # llist.delete_node_at(1)
 # llist.len_iter()
 # llist.len_recursive(llist.head)
-# llist.merge_sorted
+# llist.merge_sorted()
 # print(llist.is_palindrome())
 llist.print_list()
