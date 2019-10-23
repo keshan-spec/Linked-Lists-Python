@@ -81,6 +81,27 @@ class LinkedList():
         else:
             return
 
+        def len_iter(self):
+        current_node = self.head
+        count = 0
+        while current_node:
+            current_node = current_node.next
+            count += 1
+        return count
+
+    def len_iter(self):
+        current_node = self.head
+        count = 0
+        while current_node:
+            current_node = current_node.next
+            count += 1
+        return count
+
+    def len_recursive(self, node):
+        if node == None:
+            return 0
+        return 1 + self.len_recursive(node.next)
+
 
 # Linke List object
 llist = LinkedList()
@@ -90,5 +111,7 @@ llist.append('C')
 # llist.prepend(6)
 # llist.insert_after_node(llist.head, 5)
 # llist.delete_node('C')
-llist.delete_node_at(1)
+# llist.delete_node_at(1)
+llist.len_iter()
+llist.len_recursive(llist.head)
 llist.print_list()
