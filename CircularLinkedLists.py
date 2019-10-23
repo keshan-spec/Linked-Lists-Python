@@ -1,5 +1,5 @@
 from Node import Node
-
+from SingleLinkedList import LinkedList
 
 """
 <Circular linked List class>
@@ -101,6 +101,24 @@ class CLinkList:
             prev.next = current_node.next
             current_node = None
 
+    def remove_node(self, node):
+        current_node = self.head
+        if self.head == node:
+            while current_node.next != self.head:
+                current_node = current_node.next
+            current_node.next = self.head.next
+            self.head = self.head.next
+        else:
+            prev = None
+            while current_node:
+                prev = current_node
+                current_node = current_node.next
+                if current_node == node:
+                    break
+
+            prev.next = current_node.next
+            current_node = None
+
     def __len__(self):
         count = 0
         node = self.head
@@ -135,8 +153,20 @@ class CLinkList:
         split_clist.append(current_node.data)
         return self, split_clist
 
+    def josephus_circ(self, step):
+        current_node = self.head
+        while len(self) > 1:
+            count = 1
+            while count != step:
+                current_node = current_node.next
+                count += 1
+            print(f'Removed -> {current_node.data}')
+            self.remove_node(current_node)
+            current_node = current_node.next
 
-# Circular Linked list class object
+    def is_circular_ll(self, inp_list):
+
+        # Circular Linked list class object
 cl = CLinkList()
 """
 Example:
@@ -153,11 +183,13 @@ cl.append('C')
 cl.append('D')
 cl.append('E')
 cl.append('F')
-split_1, split_2 = cl.split()
-split_1.print_cllist()
-split_2.print_cllist()
+# cl.remove_node(cl.head.next)
+cl.josephus_circ(2)
 
+# split_1, split_2 = cl.split()
+# split_1.print_cllist()
+# split_2.print_cllist()
 # cl.prepend('F')
 # cl.remove('B')
 # cl.append_after(cl.head.next, 'K')
-# cl.print_cllist()
+cl.print_cllist()
