@@ -41,12 +41,32 @@ class LinkedList():
         new_node.next = prev_node.next
         prev_node.next = new_node
 
+    def delete_node(self, key):
+        current_node = self.head
+        if current_node and current_node.data == key:
+            self.head = current_node.next
+            current_node = None
+            return
+
+        prev = None
+        while current_node and current_node.data != key:
+            prev = current_node
+            current_node = current_node.next
+
+        if current_node:
+            prev.next = current_node.next
+            current_node = None
+            return
+        else:
+            return
+
 
 # Linke List object
 llist = LinkedList()
-llist.append(1)
-llist.append(2)
-llist.append(3)
-llist.prepend(6)
-llist.insert_after_node(llist.head, 5)
+llist.append('A')
+llist.append('B')
+llist.append('C')
+# llist.prepend(6)
+# llist.insert_after_node(llist.head, 5)
+llist.delete_node('C')
 llist.print_list()
