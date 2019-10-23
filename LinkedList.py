@@ -240,6 +240,7 @@ llist.append(5)
 llist.append(5)
 
 llist.occurances(5)
+llist.occurances_recursive(llist.head, 5)
 # llist.remove_duplicates()
 # llist.prepend(6)
 # llist.insert_after_node(llist.head, 5)
