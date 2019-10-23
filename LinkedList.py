@@ -17,6 +17,12 @@ class LinkedList():
             current_node = current_node.next
         print(nodes.strip('->'))
 
+    def helper(self, node, name):
+        if node is None:
+            print(f'{name} : None')
+        else:
+            print(f'{name} : {node.data}')
+
     def append(self, data):
         new_node = Node(data)
         if self.head is None:
@@ -80,14 +86,6 @@ class LinkedList():
             return
         else:
             return
-
-        def len_iter(self):
-        current_node = self.head
-        count = 0
-        while current_node:
-            current_node = current_node.next
-            count += 1
-        return count
 
     def len_iter(self):
         current_node = self.head
